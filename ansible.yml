@@ -49,8 +49,6 @@
   gather_facts: true
   become: false
   tasks:
-  -name: Echo my_env_var
-   shell: "echo $JOB_NAME"
    environment: 
    JOB_NAME :: $JOB_NAME
   - shell:
