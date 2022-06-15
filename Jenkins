@@ -1,4 +1,4 @@
-/*pipeline {
+pipeline {
     agent any
     parameters {
         choice(
@@ -8,6 +8,7 @@
         )
     }
     stages {
+        /* 
         stage('git clone') {
             //steps {
               //git branch: 'master', credentialsId: 'password',url: "https://github.com.git"
