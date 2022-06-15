@@ -80,7 +80,7 @@
         - apache2
         - mysql-server
         - php7.2
-        - php7.2-mysql
+       # - php7.2-mysql
   - name: start services
     service: name={{ item }} state=started enabled=yes
     with_items:
