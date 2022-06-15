@@ -14,7 +14,7 @@ pipeline {
               //sh "ls -ll"
             //}
         //}
-        
+        }
         stage('terraform init') {
             steps {
               sh "terraform init" 
@@ -47,6 +47,5 @@ pipeline {
               sh "ansible-playbook ansible.yml --extra-vars 'WORKSPACE=$WORKSPACE' -vvvvv"
             }
         }
-      }
     }
 }  
