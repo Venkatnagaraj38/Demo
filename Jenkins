@@ -47,5 +47,6 @@ pipeline {
               sh "ansible-playbook ansible.yml --extra-vars 'WORKSPACE=$WORKSPACE' -vvvvv"
             }
         }
+        }
     }
-}
+}  
