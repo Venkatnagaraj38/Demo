@@ -10,7 +10,7 @@ pipeline {
     stages {
         //stage('git clone') {
             //steps {
-              //git branch: 'master', credentialsId: 'password',url: "https://github.com.git" 
+              //git branch: 'master', credentialsId: 'password',url: "https://github.com.git"
               //sh "ls -ll"
             //}
         //}
