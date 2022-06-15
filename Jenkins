@@ -45,7 +45,7 @@ pipeline {
             steps {
                 sh "ls -ll && pwd"
                 
-              sh "ansible-playbook ansible.yml -vvvvv"
+              sh "ansible-playbook ansible.yml --extra-vars 'WORKSPACE=$WORKSPACE' -vvvvv"
             }
         }
     }
