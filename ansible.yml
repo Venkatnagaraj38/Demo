@@ -45,30 +45,29 @@
 #       src: index.html
 #       dest: /var/www/html/index.html 
 
-# - hosts: localhost
-#   gather_facts: true
-#   become: false
-#   tasks:
-#   - shell:
-#       cmd: terraform output public_ip
-#       chdir: $WORKSPACE
-#     register: terraform
+- hosts: localhost
+  gather_facts: true
+  become: false
+  tasks:
+  - shell:
+      cmd: terraform output public_ip
+      chdir: $WORKSPACE
+    register: terraform
 
-#   - ansible.builtin.debug:
-#       var: terraform.stdout
+  - ansible.builtin.debug:
+      var: terraform.stdout
 
-#   - shell:
-#       cmd: terraform output key > $WORKSPACE/sshkey.pem && chmod 400 $WORKSPACE/sshkey.pem &&  chown jenkins.jenkins $WORKSPACE/sshkey.pem 
-#       chdir: $WORKSPACE
+  - shell:
+      cmd: terraform output key > $WORKSPACE/sshkey.pem && chmod 400 $WORKSPACE/sshkey.pem &&  chown jenkins.jenkins $WORKSPACE/sshkey.pem 
+      chdir: $WORKSPACE
 
-#   - name: Update Inventory
-#     ansible.builtin.add_host:
-#       name: "{{ item }}"
-#       groups: aws
-#       ansible_ssh_private_key_file: $WORKSPACE/sshkey.pem
-#       ansible_user: ubuntu
-#     loop: "{{ terraform.stdout }}"
-
+  - name: Update Inventory
+    ansible.builtin.add_host:
+      name: "{{ item }}"
+      groups: aws
+      ansible_ssh_private_key_file: $WORKSPACE/sshkey.pem
+      ansible_user: ubuntu
+    loop: "{{ terraform.stdout }}"
 - hosts: ubuntu
   gather_facts: true
   become: true
@@ -79,14 +78,13 @@
     with_items:
         - apache2
         - mysql-server
-       #- php7.2
-       # - php7.2-mysql
+        - php7.2
+        - php7.2-mysql
   - name: start services
     service: name={{ item }} state=started enabled=yes
     with_items:
         - apache2
         - mysql
-
   - name: deploy index.html
     copy:
       src: index.html
