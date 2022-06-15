@@ -8,7 +8,8 @@ pipeline {
         )
     }
     stages {
-        //stage('git clone') {
+        /*
+        stage('git clone') {
             //steps {
               //git branch: 'master', credentialsId: 'password',url: "https://github.com.git"
               //sh "ls -ll"
@@ -40,6 +41,7 @@ pipeline {
 
             }
         }
+        */
         
         stage('ansible playbook') {
             steps {
