@@ -7,8 +7,7 @@ pipeline {
             description: ''
         )
     }
-    stages {
-        /* 
+    stages { 
         stage('git clone') {
             //steps {
               //git branch: 'master', credentialsId: 'password',url: "https://github.com.git"
@@ -30,7 +29,7 @@ pipeline {
                     sh  "ls -ll"
                     sh "pwd"
                     sh "export TF_LOGS=trace"
-                   // sh "terraform init && terraform plan -var 'type=${params.AWS_EC2_TYPE}' -no-color" 
+                    //sh "terraform init && terraform plan -var 'type=${params.AWS_EC2_TYPE}' -no-color" 
                 }
             }
         }
@@ -41,13 +40,11 @@ pipeline {
 
             }
         }
-        */
-        
         stage('ansible playbook') {
             steps {
                 sh "ls -ll && pwd"
                 
-              sh "ansible-playbook -i inventory ansible.yml --extra-vars 'WORKSPACE=$WORKSPACE' -vvvvv"
+              sh "ansible-playbook ansible.yml --extra-vars 'WORKSPACE=$WORKSPACE' -vvvvv"
             }
         }
     }
