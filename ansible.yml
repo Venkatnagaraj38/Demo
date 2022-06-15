@@ -69,7 +69,7 @@
 #       ansible_user: ubuntu
 #     loop: "{{ terraform.stdout }}"
 
-- hosts: all
+- hosts: ubuntu
   gather_facts: true
   become: true
   user: root
