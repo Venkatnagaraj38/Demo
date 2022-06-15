@@ -49,8 +49,6 @@
   gather_facts: true
   become: false
   tasks:
-   environment: 
-   JOB_NAME :: $JOB_NAME
   - shell:
       cmd: terraform output public_ip
       chdir: $WORKSPACE
