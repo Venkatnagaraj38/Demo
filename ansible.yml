@@ -57,7 +57,7 @@
       var: terraform.stdout
 
   - shell:
-      cmd: terraform output key > $WORKSPACE/sshkey.pem && chmod 400 $WORKSPACE/sshkey.pem &&  chown jenkins.jenkins $WORKSPACE/sshkey.pem 
+      cmd: terraform output key > $WORKSPACE/sshkey.pem && chmod 400 $WORKSPACE/sshkey.pem && chown jenkins.jenkins $WORKSPACE/sshkey.pem 
       chdir: $WORKSPACE
 
   - name: Update Inventory
